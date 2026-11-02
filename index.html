@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Aquarela 15º andar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&display=swap">
+<style>
+/* One page, céu rosa: hero com a vista → 5 horas do dia → região em 6 itens → 6 fotos + vídeo → ficha curta → contato. Céu índigo, horizonte âmbar, texto cor de janela acesa. Tema único escuro. */
+:root{
+  /* da foto: céu azul-ardósia, nuvens rosa-lilás, prédios azul-aço, luzes de sódio */
+  --sky-0:#1a1e33; --sky-1:#232a47; --sky-2:#2f385e; --haze:#55608f; --line:#3b4570;
+  --fg:#f1eef8; --fg-2:#c3bfdc; --fg-3:#8f8bb0;
+  --horizon:#ef9ac0; --horizon-2:#f7b9d3; --glow:#f5c96b; --wa:#25d366;
+  --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --body:"Instrument Sans",ui-sans-serif,system-ui,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--sky-0);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.5;margin:0;padding-bottom:84px}
+img,video{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.05;font-weight:700;letter-spacing:-.01em}
+h2{font-size:clamp(26px,3.6vw,38px)}
+p{margin:0}
+.wrap{max-width:1120px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--horizon);font-weight:600}
+.band{padding-block:60px}
+.band.mid{background:var(--sky-1)}
+.muted{color:var(--fg-2)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:999px;font-weight:600;text-decoration:none;border:1.5px solid transparent;cursor:pointer;font:inherit;font-weight:600;transition:transform .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--horizon);outline-offset:3px}
+.btn.wa{background:var(--wa);color:#062b16}
+.btn.ghost{border-color:var(--haze);color:var(--fg)}
+.btn.amber{background:var(--horizon);color:#3a1230}
+.btn svg{width:20px;height:20px;flex:none}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--sky-0)}
+
+/* hero */
+.hero{position:relative;overflow:hidden;background:var(--sky-0)}
+.hero .bg{position:absolute;inset:0;background:url("img/vista-rosa.jpg") center 45%/cover no-repeat}
+.hero .veil{position:absolute;inset:0;background:linear-gradient(90deg,rgba(26,30,51,.7) 0%,rgba(26,30,51,.35) 45%,rgba(26,30,51,0) 100%),linear-gradient(180deg,rgba(26,30,51,.25) 0%,rgba(26,30,51,0) 35%,rgba(26,30,51,.55) 75%,var(--sky-0) 100%)}
+.hero .wrap{position:relative;min-height:min(90vh,780px);display:flex;flex-direction:column;justify-content:flex-end;padding-block:120px 52px}
+.hero .brand{font-family:var(--display);font-weight:700;color:var(--glow);font-size:15px;letter-spacing:.02em}
+.hero .brand span{font-family:var(--body);font-weight:500;color:var(--fg-2);font-size:13px;margin-left:10px}
+.hero h1{font-size:clamp(40px,6.4vw,86px);font-weight:500;max-width:13ch;margin-top:18px;text-shadow:0 2px 30px rgba(0,0,0,.7)}
+.hero h1 b{font-weight:700;color:var(--horizon-2)}
+.hero .lede{font-size:clamp(18px,2.2vw,24px);color:#e9e4f4;margin-top:16px;max-width:40ch;text-shadow:0 1px 14px rgba(0,0,0,.7)}
+.hero .meta{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:28px;font-variant-numeric:tabular-nums}
+.hero .meta div{display:flex;flex-direction:column}
+.hero .meta strong{font-family:var(--display);font-size:26px;font-weight:700;color:var(--glow);text-shadow:0 1px 12px rgba(0,0,0,.8)}
+.hero .meta span{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-2)}
+.price{margin-top:26px;display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 18px}
+.price strong{font-family:var(--display);font-size:clamp(36px,5vw,58px);font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:#fff;text-shadow:0 2px 20px rgba(0,0,0,.7)}
+.price small{color:var(--horizon-2);font-size:15px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+@media (max-width:760px){.hero .wrap{min-height:0;padding-block:90px 40px}.hero .bg{background-position:60% 55%}}
+
+/* 24h */
+.strip{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:26px}
+@media (max-width:860px){.strip{grid-template-columns:repeat(2,minmax(0,1fr))}.strip .s:first-child{grid-column:span 2}}
+.s,.g{all:unset;cursor:pointer;display:block;position:relative;aspect-ratio:4/3;max-width:100%;overflow:hidden;border-radius:12px;background:var(--sky-2)}
+.s img,.g img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.s:hover img,.g:hover img{transform:scale(1.04)}
+.s span,.g span{position:absolute;left:12px;bottom:10px;right:12px;color:#fff;font-size:13px;font-weight:600;text-shadow:0 1px 10px rgba(0,0,0,.8);display:flex;justify-content:space-between;gap:8px}
+.s span em{font-style:normal;color:var(--horizon-2);font-variant-numeric:tabular-nums}
+.s:focus-visible,.g:focus-visible{outline:3px solid var(--horizon)}
+
+/* região: Google Maps + lista de pontos */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.chip{all:unset;cursor:pointer;font:inherit;font-size:13.5px;font-weight:600;padding:8px 14px;border-radius:999px;border:1.5px solid var(--line);color:var(--fg-2);display:inline-flex;align-items:center;gap:8px}
+.chip i{width:9px;height:9px;border-radius:50%;display:inline-block}
+.chip.on{border-color:var(--horizon);color:var(--fg);background:rgba(239,154,192,.12)}
+.chip:focus-visible{outline:3px solid var(--horizon)}
+.mapwrap{display:grid;grid-template-columns:1.3fr .7fr;gap:18px;margin-top:18px;align-items:stretch}
+@media (max-width:860px){.mapwrap{grid-template-columns:1fr}}
+.mapbox{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:var(--sky-2);aspect-ratio:1/1;max-width:100%}
+@media (max-width:860px){.mapbox{aspect-ratio:4/5}}
+.mapbox iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:saturate(.85) contrast(1.05)}
+.panel{border:1px solid var(--line);border-radius:16px;padding:12px;background:linear-gradient(160deg,var(--sky-2),var(--sky-1));display:flex;flex-direction:column;gap:4px;min-width:0;max-height:min(70vh,640px);overflow:auto}
+@media (max-width:860px){.panel{max-height:360px}}
+.pt{all:unset;cursor:pointer;display:flex;gap:12px;align-items:center;padding:10px 12px;border-radius:10px;font:inherit}
+.pt:hover{background:rgba(255,255,255,.05)}
+.pt.on{background:rgba(239,154,192,.14);outline:1px solid rgba(239,154,192,.4)}
+.pt:focus-visible{outline:3px solid var(--horizon)}
+.pt i{width:10px;height:10px;border-radius:50%;flex:none}
+.pt span{display:flex;flex-direction:column;min-width:0}
+.pt b{font-weight:600;color:#fff;font-size:15px}
+.pt small{color:var(--fg-3);font-size:12.5px}
+.pt.hide{display:none}
+.panel .btn{align-self:stretch;justify-content:center;margin-top:8px;font-size:14px;padding:10px 16px}
+
+/* fotos + vídeo */
+.car{position:relative;margin-top:26px;border-radius:16px;overflow:hidden;background:var(--sky-2);border:1px solid var(--line);touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.track{display:flex;will-change:transform}
+.track.anim{transition:transform .55s cubic-bezier(.22,.8,.3,1)}
+.sl{flex:0 0 100%;min-width:0;margin:0;position:relative;aspect-ratio:4/3;max-height:min(70vh,700px)}
+.sl img{width:100%;height:100%;object-fit:cover;display:block;cursor:zoom-in;-webkit-user-drag:none}
+.sl figcaption{position:absolute;left:16px;bottom:14px;background:rgba(26,30,51,.72);color:#fff;padding:8px 12px;border-radius:10px;font-size:14px;font-weight:600;backdrop-filter:blur(6px)}
+.arr{all:unset;cursor:pointer;position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;background:rgba(26,30,51,.75);border:1px solid var(--line);color:#fff;display:grid;place-items:center;backdrop-filter:blur(6px);transition:background .15s}
+.arr:hover{background:rgba(239,154,192,.35)}
+.arr:focus-visible{outline:3px solid var(--horizon)}
+.arr.prev{left:12px}.arr.next{right:12px}
+.ctr{position:absolute;right:14px;top:12px;font-size:12.5px;font-weight:600;color:var(--fg);background:rgba(26,30,51,.72);padding:5px 10px;border-radius:999px;font-variant-numeric:tabular-nums}
+.dots{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:center;gap:6px;padding:0 0 8px;pointer-events:none}
+.dots i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.35);transition:background .2s,transform .2s}
+.dots i.on{background:var(--horizon);transform:scale(1.3)}
+@media (max-width:640px){.arr{width:38px;height:38px}.sl figcaption{font-size:12.5px;left:10px;bottom:22px}}
+.tour{display:grid;grid-template-columns:minmax(0,320px) 1fr;gap:36px;align-items:center;margin-top:40px}
+@media (max-width:760px){.tour{grid-template-columns:1fr}}
+.phone{width:100%;max-width:320px;aspect-ratio:444/960;border-radius:26px;overflow:hidden;background:#000;box-shadow:0 40px 80px -30px rgba(0,0,0,.9),0 0 0 1px var(--line)}
+.phone video{width:100%;height:100%;object-fit:cover}
+dialog.lb{border:0;background:transparent;padding:0;max-width:min(96vw,1200px);max-height:96vh}
+dialog.lb::backdrop{background:rgba(20,22,40,.94)}
+dialog.lb img{max-height:86vh;width:auto;max-width:96vw;margin:auto;border-radius:12px}
+dialog.lb .bar{display:flex;justify-content:space-between;align-items:center;color:#eee;padding:10px 4px;font-size:14px;gap:12px}
+dialog.lb button{all:unset;cursor:pointer;color:#fff;background:rgba(255,255,255,.14);padding:8px 14px;border-radius:999px;font-weight:600}
+
+/* ficha */
+.spec{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:26px}
+@media (max-width:860px){.spec{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.spec div{border-top:2px solid var(--glow);padding:12px 2px 0;min-width:0}
+.spec span{display:block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-3)}
+.spec b{font-family:var(--display);font-size:19px;color:#fff;font-variant-numeric:tabular-nums}
+.incl{margin-top:22px;color:var(--fg-2);font-size:15.5px;max-width:70ch}
+.incl b{color:var(--glow);font-weight:600}
+
+/* contato */
+.contato{position:relative;overflow:hidden}
+.contato .bg{position:absolute;inset:0;background:url("img/vista-rosa.jpg") center 30%/cover no-repeat;opacity:.45}
+.contato .veil{position:absolute;inset:0;background:linear-gradient(180deg,var(--sky-1) 0%,rgba(35,42,71,.55) 40%,rgba(26,30,51,.92) 100%)}
+.contato .wrap{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:center}
+@media (max-width:860px){.contato .wrap{grid-template-columns:1fr}}
+.fone{font-family:var(--display);font-size:clamp(26px,3.6vw,38px);font-weight:700;user-select:all;font-variant-numeric:tabular-nums;color:var(--glow)}
+.copyb{all:unset;cursor:pointer;font-size:14px;font-weight:600;color:var(--horizon-2);border-bottom:1.5px solid currentColor}
+.contato form{display:grid;gap:12px;background:rgba(35,42,71,.85);border:1px solid var(--line);border-radius:16px;padding:22px;backdrop-filter:blur(8px)}
+.contato input,.contato select{font:inherit;padding:12px 14px;border:1px solid var(--haze);border-radius:10px;background:var(--sky-0);color:var(--fg);width:100%}
+.contato .ok{color:var(--horizon-2);font-weight:600;font-size:15px}
+footer{padding-block:24px;font-size:13px;color:var(--fg-3);background:var(--sky-0)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
+
+/* barra fixa */
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:25;background:rgba(26,30,51,.92);backdrop-filter:blur(12px);border-top:1px solid var(--line);padding-top:10px;padding-bottom:calc(10px + env(safe-area-inset-bottom,0px))}
+.sticky .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.sticky .p{font-family:var(--display);font-weight:700;font-size:20px;font-variant-numeric:tabular-nums;color:#fff}
+.sticky .p small{display:block;font-family:var(--body);font-weight:500;font-size:12px;color:var(--fg-2)}
+.sticky .btn{padding:12px 18px}
+@media (max-width:480px){.sticky .p{font-size:17px}.sticky .btn span.t{display:none}}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<main>
+<section class="hero">
+  <div class="bg" role="img" aria-label="Vista da varanda ao amanhecer: céu rosa e lilás sobre a cidade, avenida iluminada"></div>
+  <div class="veil" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="brand">Aquarela Bela Vista · 15º andar<span>Rua Conselheiro Ramalho, 376 · Bixiga · SP</span></p>
+    <h1>Bela Vista, <b>literalmente.</b></h1>
+    <p class="lede">O bairro chama Bela Vista. A janela explica por quê.</p>
+    <div class="meta">
+      <div><strong>50 m²</strong><span>área útil</span></div>
+      <div><strong>2</strong><span>dorms · 1 suíte</span></div>
+      <div><strong>2</strong><span>banheiros</span></div>
+      <div><strong>1</strong><span>vaga</span></div>
+      <div><strong>2020</strong><span>prédio novo</span></div>
+    </div>
+    <div class="price"><strong>R$ 700.000</strong><small>Aceita oferta, sob consulta · direto com o proprietário</small></div>
+    <div class="cta">
+      <a class="btn wa" href="https://wa.me/5511941490369?text=Ol%C3%A1!%20Vi%20o%20site%20do%20apartamento%20no%20Aquarela%20Bela%20Vista%20(15%C2%BA%20andar)%20e%20quero%20agendar%20uma%20visita." target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4 5.3 5.3 0 0 0 3.2.7 2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3Z"/></svg>
+        Agendar visita
+      </a>
+      <a class="btn ghost" href="#tour">Ver o tour em vídeo</a>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <p class="eyebrow">A vista</p>
+    <h2 style="margin-top:10px">A mesma varanda, do amanhecer à lua</h2>
+    <div class="strip" id="strip">
+      <button class="s" type="button" data-cap="Amanhecer rosa, visto da varanda"><img src="img/vista-rosa.jpg" alt="Amanhecer com céu rosa visto da varanda" loading="lazy"><span>Amanhecer <em>5h50</em></span></button>
+      <button class="s" type="button" data-cap="Nascer do sol atrás do Centro"><img src="img/vista-amanhecer.jpg" alt="Nascer do sol visto da varanda" loading="lazy"><span>Nascer do sol <em>6h10</em></span></button>
+      <button class="s" type="button" data-cap="Dia claro, até a Serra"><img src="img/vista-dia.jpg" alt="Vista diurna da cidade" loading="lazy"><span>Dia <em>13h</em></span></button>
+      <button class="s" type="button" data-cap="Hora azul"><img src="img/vista-hora-azul.jpg" alt="Vista ao entardecer" loading="lazy"><span>Hora azul <em>19h</em></span></button>
+      <button class="s" type="button" data-cap="Lua sobre a Liberdade"><img src="img/vista-lua.jpg" alt="Lua cheia sobre a cidade" loading="lazy"><span>Lua <em>23h</em></span></button>
+    </div>
+  </div>
+</section>
+
+<section class="band mid" id="regiao">
+  <div class="wrap">
+    <p class="eyebrow">A região</p>
+    <h2 style="margin-top:10px;max-width:24ch">Bixiga: tudo a pé</h2>
+    <div class="chips" id="chips" role="group" aria-label="Filtrar pontos">
+      <button type="button" class="chip on" data-cat="all">Tudo</button>
+      <button type="button" class="chip" data-cat="cultura"><i style="background:var(--horizon)"></i>Cultura</button>
+      <button type="button" class="chip" data-cat="comida"><i style="background:var(--glow)"></i>Comida e compras</button>
+      <button type="button" class="chip" data-cat="verde"><i style="background:#6fcf7c"></i>Parque</button>
+      <button type="button" class="chip" data-cat="saude"><i style="background:#ef7b7b"></i>Saúde</button>
+      <button type="button" class="chip" data-cat="transporte"><i style="background:#9fb3e6"></i>Transporte</button>
+    </div>
+    <div class="mapwrap">
+      <div class="mapbox" id="mapbox">
+        <iframe id="gmap" title="Mapa da região" src="https://www.google.com/maps?q=Rua+Conselheiro+Ramalho,+376,+Bela+Vista,+S%C3%A3o+Paulo&z=16&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+      <aside class="panel" id="panel">
+        <button type="button" class="pt on" data-id="home"><i style="background:var(--horizon)"></i><span><b>Aquarela Bela Vista</b><small>Rua Conselheiro Ramalho, 376 · você está aqui</small></span></button>
+        <button type="button" class="pt" data-id="oficina" data-lat="-23.5558" data-lng="-46.6417"><i style="background:var(--horizon)"></i><span><b>Teatro Oficina</b><small>Teatro · 300 m · 4 min a pé</small></span></button>
+        <button type="button" class="pt" data-id="parque" data-lat="-23.5553" data-lng="-46.6405"><i style="background:#6fcf7c"></i><span><b>Parque do Bixiga</b><small>Em implantação · 300 m · 4 min a pé</small></span></button>
+        <button type="button" class="pt" data-id="sergio" data-lat="-23.5573" data-lng="-46.6452"><i style="background:var(--horizon)"></i><span><b>Teatro Sérgio Cardoso</b><small>Teatro · 250 m · 3 min a pé</small></span></button>
+        <button type="button" class="pt" data-id="orione" data-lat="-23.5585" data-lng="-46.645"><i style="background:var(--horizon)"></i><span><b>Praça Dom Orione</b><small>Praça e feira · 400 m · 5 min a pé</small></span></button>
+        <button type="button" class="pt" data-id="treze" data-lat="-23.5605" data-lng="-46.646"><i style="background:var(--glow)"></i><span><b>Cantinas da Treze de Maio</b><small>Cantinas e bares · 5 min a pé</small></span></button>
+        <button type="button" class="pt" data-id="itororo" data-lat="-23.5578" data-lng="-46.64"><i style="background:var(--horizon)"></i><span><b>Vila Itororó</b><small>Centro cultural · 550 m · 7 min a pé</small></span></button>
+        <button type="button" class="pt" data-id="bp" data-lat="-23.5612" data-lng="-46.6416"><i style="background:#ef7b7b"></i><span><b>Beneficência Portuguesa</b><small>Hospital · 750 m · 9 min a pé</small></span></button>
+        <button type="button" class="pt" data-id="menino" data-lat="-23.558" data-lng="-46.649"><i style="background:#ef7b7b"></i><span><b>Hosp. Menino Jesus</b><small>Hospital infantil · 550 m · 7 min a pé</small></span></button>
+        <button type="button" class="pt" data-id="roosevelt" data-lat="-23.5465" data-lng="-46.6465"><i style="background:var(--horizon)"></i><span><b>Praça Roosevelt</b><small>Praça e teatros · 1 km · 12 min a pé</small></span></button>
+        <button type="button" class="pt" data-id="masp" data-lat="-23.5614" data-lng="-46.6562"><i style="background:var(--horizon)"></i><span><b>MASP</b><small>Museu · 1,4 km · 17 min a pé</small></span></button>
+        <button type="button" class="pt" data-id="patio" data-lat="-23.5703" data-lng="-46.645"><i style="background:var(--glow)"></i><span><b>Pátio Paulista</b><small>Shopping · 1,7 km · 20 min a pé</small></span></button>
+        <button type="button" class="pt" data-id="bandeira" data-lat="-23.5508" data-lng="-46.6412"><i style="background:#9fb3e6"></i><span><b>Terminal Bandeira</b><small>Terminal de ônibus · 600 m · 8 min a pé</small></span></button>
+        <a class="btn ghost" id="proute" href="https://www.google.com/maps/search/?api=1&query=Rua+Conselheiro+Ramalho+376+Bela+Vista+S%C3%A3o+Paulo" target="_blank" rel="noopener">Abrir no app do Google Maps</a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="fotos">
+  <div class="wrap">
+    <p class="eyebrow">O apartamento</p>
+    <h2 style="margin-top:10px;max-width:26ch">Planejados em tudo, pronto para morar</h2>
+    <div class="car" id="car" aria-roledescription="carrossel" aria-label="Fotos do apartamento">
+      <div class="track" id="track">
+      <figure class="sl"><img src="img/f01.jpg" alt="Sala e varanda" ><figcaption>Sala e varanda</figcaption></figure>
+      <figure class="sl"><img src="img/f02.jpg" alt="Varanda" loading="lazy"><figcaption>Varanda</figcaption></figure>
+      <figure class="sl"><img src="img/f03.jpg" alt="Painel e banco de canto" loading="lazy"><figcaption>Painel e banco de canto</figcaption></figure>
+      <figure class="sl"><img src="img/f04.jpg" alt="Hall de entrada" loading="lazy"><figcaption>Hall de entrada</figcaption></figure>
+      <figure class="sl"><img src="img/f05.jpg" alt="Cozinha" loading="lazy"><figcaption>Cozinha</figcaption></figure>
+      <figure class="sl"><img src="img/f06.jpg" alt="Quarto 1" loading="lazy"><figcaption>Quarto 1</figcaption></figure>
+      <figure class="sl"><img src="img/f07.jpg" alt="Quarto 1 · boiserie" loading="lazy"><figcaption>Quarto 1 · boiserie</figcaption></figure>
+      <figure class="sl"><img src="img/f08.jpg" alt="Suíte" loading="lazy"><figcaption>Suíte</figcaption></figure>
+      <figure class="sl"><img src="img/f09.jpg" alt="Suíte · armário espelhado" loading="lazy"><figcaption>Suíte · armário espelhado</figcaption></figure>
+      <figure class="sl"><img src="img/f10.jpg" alt="Quarto 2" loading="lazy"><figcaption>Quarto 2</figcaption></figure>
+      <figure class="sl"><img src="img/f11.jpg" alt="Banheiro da suíte" loading="lazy"><figcaption>Banheiro da suíte</figcaption></figure>
+      <figure class="sl"><img src="img/f12.jpg" alt="Banheiro social" loading="lazy"><figcaption>Banheiro social</figcaption></figure>
+      </div>
+      <button type="button" class="arr prev" id="cprev" aria-label="Foto anterior"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+      <button type="button" class="arr next" id="cnext" aria-label="Próxima foto"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+      <div class="ctr" id="ctr" aria-live="polite">1 / 12</div>
+      <div class="dots" id="dots"></div>
+    </div>
+    <div class="tour" id="tour">
+      <div class="phone"><video controls playsinline preload="metadata" poster="img/tour-poster.jpg" src="tour.mp4" aria-label="Tour em vídeo pelo apartamento"></video></div>
+      <div>
+        <p class="eyebrow">Tour em vídeo</p>
+        <h2 style="margin-top:10px">Dois minutos lá dentro</h2>
+        <p class="muted" style="margin-top:12px;max-width:44ch">Varanda, sala, cozinha, os dois quartos e os banheiros, num passeio contínuo. Melhor no celular, em tela cheia.</p>
+      </div>
+    </div>
+  </div>
+  <dialog class="lb" id="lb" aria-label="Foto ampliada">
+    <div class="bar"><span id="lbcap"></span><button type="button" id="lbclose">Fechar</button></div>
+    <img id="lbimg" src="" alt="">
+  </dialog>
+</section>
+
+<section class="band mid" id="ficha">
+  <div class="wrap">
+    <p class="eyebrow">Ficha</p>
+    <h2 style="margin-top:10px">O essencial</h2>
+    <div class="spec">
+      <div><span>Área útil</span><b>50 m²</b></div>
+      <div><span>Andar</span><b>15º de 18</b></div>
+      <div><span>Dormitórios</span><b>2 · 1 suíte</b></div>
+      <div><span>Banheiros</span><b>2</b></div>
+      <div><span>Vaga</span><b>1</b></div>
+      <div><span>Condomínio</span><b>R$ 700</b></div>
+      <div><span>IPTU</span><b>12× R$ 91</b></div>
+      <div><span>Entrega</span><b>Dez/2020</b></div>
+    </div>
+    <p class="incl"><b>Fica no apartamento:</b> painel ripado e rack da sala, banco do hall, cozinha planejada, guarda-roupa espelhado, armários dos banheiros, persianas. Aquecedor a gás, área de serviço separada. <b>No prédio:</b> piscina e churrasqueira na cobertura, academia, salão de festas, pet place, lavanderia, portaria 24h.</p>
+  </div>
+</section>
+
+<section class="band contato" id="contato">
+  <div class="bg" aria-hidden="true"></div>
+  <div class="veil" aria-hidden="true"></div>
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Visita</p>
+      <h2 style="margin-top:10px">Vem ver a cidade acender daqui de cima</h2>
+      <div style="margin-top:20px">
+        <div class="fone" id="fone">(11) 94149-0369</div>
+        <button class="copyb" type="button" id="copiar">Copiar número</button>
+      </div>
+      <div class="cta">
+        <a class="btn wa" href="https://wa.me/5511941490369?text=Ol%C3%A1!%20Vi%20o%20site%20do%20apartamento%20no%20Aquarela%20Bela%20Vista%20(15%C2%BA%20andar)%20e%20quero%20agendar%20uma%20visita." target="_blank" rel="noopener">Chamar no WhatsApp</a>
+      </div>
+    </div>
+    <form id="lead">
+      <label for="nome" class="eyebrow">Nome</label><input id="nome" name="nome" required autocomplete="name" placeholder="Seu nome">
+      <label for="tel" class="eyebrow">WhatsApp</label><input id="tel" name="tel" required autocomplete="tel" inputmode="tel" placeholder="(11) 9...">
+      <label for="quando" class="eyebrow">Melhor horário</label>
+      <select id="quando" name="quando"><option>Manhã</option><option>Tarde</option><option selected>Fim de tarde</option><option>Fim de semana</option></select>
+      <button class="btn amber" type="submit" style="justify-content:center">Quero visitar</button>
+      <p class="ok" id="leadok" hidden>Recebido. Toque no botão do WhatsApp para enviar seus dados prontos.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span>Aquarela Bela Vista · Rua Conselheiro Ramalho, 376 · Bela Vista, São Paulo</span><span>Venda direta com o proprietário</span></div></footer>
+
+<div class="sticky">
+  <div class="wrap">
+    <div class="p">R$ 700.000<small>2 dorms · 50 m² · 15º andar · 1 vaga</small></div>
+    <a class="btn wa" href="https://wa.me/5511941490369?text=Ol%C3%A1!%20Vi%20o%20site%20do%20apartamento%20no%20Aquarela%20Bela%20Vista%20(15%C2%BA%20andar)%20e%20quero%20agendar%20uma%20visita." target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4 5.3 5.3 0 0 0 3.2.7 2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3Z"/></svg>
+      <span class="t">Agendar visita</span>
+    </a>
+  </div>
+</div>
+
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id)};
+  var lb=$('lb'),lbimg=$('lbimg'),lbcap=$('lbcap');
+  document.querySelectorAll('.s').forEach(function(b){b.addEventListener('click',function(){var im=b.querySelector('img');lbimg.src=im.src;lbimg.alt=im.alt;lbcap.textContent=b.dataset.cap||'';if(lb.showModal){lb.showModal()}else{lb.setAttribute('open','')}})});
+
+  /* carrossel infinito */
+  var track=$('track'),slides=Array.prototype.slice.call(track.children),N=slides.length,idx=1,busy=false,timer;
+  track.appendChild(slides[0].cloneNode(true));track.insertBefore(slides[N-1].cloneNode(true),slides[0]);
+  var dots=$('dots');for(var i=0;i<N;i++){var d=document.createElement('i');dots.appendChild(d)}
+  function go(i,anim){idx=i;track.classList.toggle('anim',anim!==false);track.style.transform='translateX('+(-idx*100)+'%)';var real=((idx-1)%N+N)%N;$('ctr').textContent=(real+1)+' / '+N;Array.prototype.forEach.call(dots.children,function(d,j){d.classList.toggle('on',j===real)})}
+  function next(){if(busy)return;busy=true;go(idx+1)} function prev(){if(busy)return;busy=true;go(idx-1)}
+  track.addEventListener('transitionend',function(){busy=false;if(idx===N+1)go(1,false);if(idx===0)go(N,false)});
+  go(1,false);
+  $('cnext').addEventListener('click',function(){next();restart()});$('cprev').addEventListener('click',function(){prev();restart()});
+  function restart(){clearInterval(timer);if(!matchMedia('(prefers-reduced-motion: reduce)').matches)timer=setInterval(next,4500)}
+  restart();
+  var sx=null,sy=null;
+  track.addEventListener('pointerdown',function(e){sx=e.clientX;sy=e.clientY});
+  track.addEventListener('pointerup',function(e){if(sx===null)return;var dx=e.clientX-sx,dy=e.clientY-sy;sx=null;if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy)){dx<0?next():prev();restart()}});
+  track.addEventListener('click',function(e){var im=e.target.closest('img');if(!im)return;lbimg.src=im.src;lbimg.alt=im.alt;lbcap.textContent=im.alt;if(lb.showModal){lb.showModal()}else{lb.setAttribute('open','')}});
+  document.addEventListener('visibilitychange',function(){document.hidden?clearInterval(timer):restart()});
+  $('lbclose').addEventListener('click',function(){lb.close()});
+  lb.addEventListener('click',function(e){if(e.target===lb)lb.close()});
+
+  /* Google Maps + lista */
+  var POIS={"oficina": {"nome": "Teatro Oficina", "cat": "cultura", "tipo": "Teatro", "desc": "O teatro de Zé Celso, na Rua Jaceguai. Um dos palcos mais importantes do país.", "dist": "300 m · 4 min a pé", "lat": -23.5558, "lng": -46.6417}, "parque": {"nome": "Parque do Bixiga", "cat": "verde", "tipo": "Em implantação", "desc": "11 mil m² de área verde ao lado do Oficina. Decreto de julho/2026, entrega prevista para 2028.", "dist": "300 m · 4 min a pé", "lat": -23.5553, "lng": -46.6405}, "sergio": {"nome": "Teatro Sérgio Cardoso", "cat": "cultura", "tipo": "Teatro", "desc": "Grande palco da Rua Rui Barbosa. Na mesma rua, o Al Janiah.", "dist": "250 m · 3 min a pé", "lat": -23.5573, "lng": -46.6452}, "orione": {"nome": "Praça Dom Orione", "cat": "cultura", "tipo": "Praça e feira", "desc": "Feira de antiguidades todo domingo de manhã.", "dist": "400 m · 5 min a pé", "lat": -23.5585, "lng": -46.645}, "treze": {"nome": "Cantinas da Treze de Maio", "cat": "comida", "tipo": "Cantinas e bares", "desc": "Speranza, Basilicata, Cannoleria do Bixiga, Mundo Pensante.", "dist": "5 min a pé", "lat": -23.5605, "lng": -46.646}, "itororo": {"nome": "Vila Itororó", "cat": "cultura", "tipo": "Centro cultural", "desc": "Casarão restaurado, programação gratuita e roda de samba mensal.", "dist": "550 m · 7 min a pé", "lat": -23.5578, "lng": -46.64}, "bp": {"nome": "Beneficência Portuguesa", "cat": "saude", "tipo": "Hospital", "desc": "Um dos maiores hospitais do país.", "dist": "750 m · 9 min a pé", "lat": -23.5612, "lng": -46.6416}, "menino": {"nome": "Hosp. Menino Jesus", "cat": "saude", "tipo": "Hospital infantil", "desc": "Na Rua dos Ingleses.", "dist": "550 m · 7 min a pé", "lat": -23.558, "lng": -46.649}, "roosevelt": {"nome": "Praça Roosevelt", "cat": "cultura", "tipo": "Praça e teatros", "desc": "Teatros independentes, bares e a Baixo Augusta ao lado.", "dist": "1 km · 12 min a pé", "lat": -23.5465, "lng": -46.6465}, "masp": {"nome": "MASP", "cat": "cultura", "tipo": "Museu", "desc": "Na Paulista, ao lado do metrô Trianon-MASP.", "dist": "1,4 km · 17 min a pé", "lat": -23.5614, "lng": -46.6562}, "patio": {"nome": "Pátio Paulista", "cat": "comida", "tipo": "Shopping", "desc": "Shopping na Paulista, perto do metrô Paraíso.", "dist": "1,7 km · 20 min a pé", "lat": -23.5703, "lng": -46.645}, "bandeira": {"nome": "Terminal Bandeira", "cat": "transporte", "tipo": "Terminal de ônibus", "desc": "Ônibus para toda a cidade.", "dist": "600 m · 8 min a pé", "lat": -23.5508, "lng": -46.6412}};
+  var HOME='Rua+Conselheiro+Ramalho,+376,+Bela+Vista,+S%C3%A3o+Paulo';
+  var gmap=$('gmap'),route=$('proute');
+  document.querySelectorAll('.pt').forEach(function(b){b.addEventListener('click',function(){
+    document.querySelectorAll('.pt').forEach(function(x){x.classList.toggle('on',x===b)});
+    var id=b.dataset.id;
+    if(id==='home'){gmap.src='https://www.google.com/maps?q='+HOME+'&z=16&output=embed';route.textContent='Abrir no app do Google Maps';route.href='https://www.google.com/maps/search/?api=1&query='+HOME;return}
+    var d=POIS[id];
+    gmap.src='https://www.google.com/maps?saddr='+HOME+'&daddr='+d.lat+','+d.lng+'&dirflg=w&output=embed';
+    route.textContent='Rota a pé até '+d.nome;route.href='https://www.google.com/maps/dir/?api=1&origin='+HOME+'&destination='+d.lat+','+d.lng+'&travelmode=walking';
+  })});
+  document.querySelectorAll('.chip').forEach(function(c){c.addEventListener('click',function(){
+    document.querySelectorAll('.chip').forEach(function(x){x.classList.toggle('on',x===c)});
+    var cat=c.dataset.cat;document.querySelectorAll('.pt[data-id]').forEach(function(b){var id=b.dataset.id;b.classList.toggle('hide',id!=='home'&&cat!=='all'&&POIS[id].cat!==cat)});
+  })});
+  $('copiar').addEventListener('click',function(){
+    var t=$('fone').textContent,btn=this;
+    function done(){btn.textContent='Copiado';setTimeout(function(){btn.textContent='Copiar número'},1600)}
+    function sel(){var r=document.createRange();r.selectNodeContents($('fone'));var s=getSelection();s.removeAllRanges();s.addRange(r)}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,sel)}else{sel()}
+  });
+  $('lead').addEventListener('submit',function(e){
+    e.preventDefault();
+    var msg='Olá! Sou '+$('nome').value.trim()+' ('+$('tel').value.trim()+'). Vi o site do apartamento no Aquarela Bela Vista (15º andar) e quero visitar. Melhor horário: '+$('quando').value+'.';
+    var url='https://wa.me/5511941490369?text='+encodeURIComponent(msg);
+    document.querySelectorAll('a.btn.wa').forEach(function(a){a.href=url});
+    $('leadok').hidden=false;
+  });
+})();
+</script>
+
+</body>
+</html>
