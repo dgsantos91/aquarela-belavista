@@ -384,7 +384,9 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-betw
     var msg='Olá! Sou '+$('nome').value.trim()+' ('+$('tel').value.trim()+'). Vi o site do apartamento no Aquarela Bela Vista (15º andar) e quero visitar. Melhor horário: '+$('quando').value+'.';
     var url='https://wa.me/5511941490369?text='+encodeURIComponent(msg);
     document.querySelectorAll('a.btn.wa').forEach(function(a){a.href=url});
+    $('leadok').textContent='Abrindo o WhatsApp com sua mensagem pronta…';
     $('leadok').hidden=false;
+    window.open(url,'_blank','noopener');
   });
 })();
 </script>
