@@ -142,6 +142,11 @@ dialog.lb button{all:unset;cursor:pointer;color:#fff;background:rgba(255,255,255
 .contato .wrap{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:center}
 @media (max-width:860px){.contato .wrap{grid-template-columns:1fr}}
 .fone{font-family:var(--display);font-size:clamp(26px,3.6vw,38px);font-weight:700;user-select:all;font-variant-numeric:tabular-nums;color:var(--glow)}
+.portal{display:inline-flex;align-items:center;gap:8px;margin-top:18px;font-size:14.5px;font-weight:600;color:var(--fg-2);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:9px 16px}
+.portal:hover{color:var(--fg);border-color:var(--haze)}
+.portal svg{width:14px;height:14px}
+.portal-note{margin-top:14px;font-size:13.5px;color:var(--fg-3)}
+.portal-note a{color:var(--horizon-2)}
 .copyb{all:unset;cursor:pointer;font-size:14px;font-weight:600;color:var(--horizon-2);border-bottom:1.5px solid currentColor}
 .contato form{display:grid;gap:12px;background:rgba(35,42,71,.85);border:1px solid var(--line);border-radius:16px;padding:22px;backdrop-filter:blur(8px)}
 .contato input,.contato select{font:inherit;padding:12px 14px;border:1px solid var(--haze);border-radius:10px;background:var(--sky-0);color:var(--fg);width:100%}
@@ -290,6 +295,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-betw
       <div><span>Entrega</span><b>Dez/2020</b></div>
     </div>
     <p class="incl"><b>Fica no apartamento:</b> painel ripado e rack da sala, banco do hall, cozinha planejada, guarda-roupa espelhado, armários dos banheiros, persianas. Aquecedor a gás, área de serviço separada. <b>No prédio:</b> piscina e churrasqueira na cobertura, academia, salão de festas, pet place, lavanderia, portaria 24h.</p>
+    <a class="portal" href="https://www.quintoandar.com.br/imovel/894361921/comprar" target="_blank" rel="noopener">Também anunciado no QuintoAndar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
   </div>
 </section>
 
@@ -307,6 +313,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-betw
       <div class="cta">
         <a class="btn wa" href="https://wa.me/5511941490369?text=Ol%C3%A1!%20Vi%20o%20site%20do%20apartamento%20no%20Aquarela%20Bela%20Vista%20(15%C2%BA%20andar)%20e%20quero%20agendar%20uma%20visita." target="_blank" rel="noopener">Chamar no WhatsApp</a>
       </div>
+      <p class="portal-note">Prefere negociar pela plataforma? <a href="https://www.quintoandar.com.br/imovel/894361921/comprar" target="_blank" rel="noopener">Veja o anúncio no QuintoAndar</a>.</p>
     </div>
     <form id="lead">
       <label for="nome" class="eyebrow">Nome</label><input id="nome" name="nome" required autocomplete="name" placeholder="Seu nome">
